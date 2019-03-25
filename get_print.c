@@ -26,13 +26,13 @@ int (*get_print(char s))(va_list, flags_t *)
 		{'r', print_rev},
 		{'S', print_bigS},
 		{'p', print_address},
-		{'%', print_percent}
+		{'%', print_percent},
+		{NUL, NULL}
 		};
-	int flags = 14;
 
-	register int i;
+	register short i;
 
-	for (i = 0; i < flags; i++)
+	for (i = 0; func_arr[i].c; i++)
 		if (func_arr[i].c == s)
 			return (func_arr[i].f);
 	return (NULL);

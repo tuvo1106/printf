@@ -11,10 +11,12 @@ int print_address(va_list l, flags_t *f)
 {
 	char *str;
 	unsigned long int p = va_arg(l, unsigned long int);
+
 	register int count = 0;
 
 	(void)f;
-	if (!p) return (_puts(NIL));
+	if (!p)
+		return (_puts(NIL));
 	str = convert(p, 16, 1);
 	count += _puts(HEXA) + _puts(str);
 	return (count);

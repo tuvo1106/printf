@@ -14,6 +14,7 @@ int print_hex(va_list l, flags_t *f)
 {
 	unsigned int num = va_arg(l, unsigned int);
 	char *str = convert(num, 16, 1);
+
 	register short count = ZERO;
 
 	if (f->hash && *str != NUL)

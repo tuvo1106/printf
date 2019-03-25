@@ -9,8 +9,6 @@
 /* macros */
 #define FLUSH -1
 #define FLAGS_INIT {false, false, false}
-#define OR ||
-#define AND &&
 #define NIL "(nil)"
 #define HEXA "0x"
 #define NULL_STRING "(null)"

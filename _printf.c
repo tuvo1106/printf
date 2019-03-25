@@ -19,8 +19,8 @@ int _printf(const char *format, ...)
 
 	va_start(arguments, format);
 	assert(p);
-	assert(*p != '%' OR *(p + 1));
-	assert(*p != '%' OR *(p + 1) != ' ' OR *(p + 2));
+	assert(*p != '%' || *(p + 1));
+	assert(*p != '%' || *(p + 1) != ' ' || *(p + 2));
 	for (p = format; *p; p++)
 	{
 		if (*p == '%')

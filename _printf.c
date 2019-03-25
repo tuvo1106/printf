@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 	assert(p);
 	assert(*p != '%' || *(p + 1));
 	assert(*p != '%' || *(p + 1) != ' ' || *(p + 2));
-	for (p = format; *p; p++)
+	for (; *p; p++)
 	{
 		if (*p == '%')
 		{

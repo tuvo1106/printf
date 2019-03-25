@@ -20,7 +20,7 @@ int print_bigS(va_list l, flags_t *f)
 		return (_puts(NULL_STRING));
 	for (i = 0; s[i]; i++)
 	{
-		if (s[i] > 0 && (s[i] < 32 || s[i] >= 127))
+		if (s[i] > 0 AND (s[i] < 32 OR s[i] >= 127))
 		{
 			_puts("\\x");
 			count += 2;
@@ -74,7 +74,7 @@ int print_rot13(va_list l, flags_t *f)
 	(void)f;
 	for (j = 0; s[j]; j++)
 	{
-		if (s[j] < 'A' || (s[j] > 'Z' && s[j] < 'a') || s[j] > 'z')
+		if (s[j] < 'A' OR (s[j] > 'Z' AND s[j] < 'a') OR s[j] > 'z')
 			_putchar(s[j]);
 		else
 		{

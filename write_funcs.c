@@ -14,7 +14,7 @@ int _putchar(char c)
 	static char buf[KILOBYTE];
 	static int i;
 
-	if (c == FLUSH OR i >= KILOBYTE)
+	if (c == FLUSH || i >= KILOBYTE)
 	{
 		write(1, &buf, i);
 		i = ZERO;

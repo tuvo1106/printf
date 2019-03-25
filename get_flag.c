@@ -10,23 +10,21 @@
  */
 int get_flag(char s, flags_t *f)
 {
-	int i = 0;
+	_Bool modifier = true;
 
 	switch (s)
 	{
 		case '+':
-			f->plus = 1;
-			i = 1;
+			f->plus = true;
 			break;
 		case ' ':
-			f->space = 1;
-			i = 1;
+			f->space = true;
 			break;
 		case '#':
-			f->hash = 1;
-			i = 1;
+			f->hash = true;
 			break;
+		default:
+			modifier = false;
 	}
-
-	return (i);
+	return (modifier);
 }

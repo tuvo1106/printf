@@ -17,7 +17,7 @@ int print_hex(va_list l, flags_t *f)
 
 	register short count = ZERO;
 
-	if (f->hash && *str != NUL)
+	if (f->hash && *str != '0')
 		count += _puts(HEXA);
 	count += _puts(str);
 	return (count);
@@ -39,7 +39,7 @@ int print_hex_big(va_list l, flags_t *f)
 	char *str = convert(num, 16, 0);
 	register short count = ZERO;
 
-	if (f->hash && *str != NUL)
+	if (f->hash && *str != '0')
 		count += _puts(HEXA);
 	count += _puts(str);
 	return (count);
@@ -78,7 +78,7 @@ int print_octal(va_list l, flags_t *f)
 	char *str = convert(num, 8, 0);
 	register short count = ZERO;
 
-	if (f->hash && *str != NUL)
+	if (f->hash && *str != '0')
 		count += _putchar('0');
 	count += _puts(str);
 	return (count);

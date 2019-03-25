@@ -3,6 +3,21 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
+#include <assert.h>
+#include <stdbool.h>
+
+/* macros */
+#define FLUSH -1
+#define FLAGS_INIT {false, false, false}
+#define OR ||
+#define AND &&
+#define NIL "(nil)"
+#define HEXA "0x"
+#define NULL_STRING "(null)"
+#define ZERO 0
+#define NUL '\0'
+#define KILOBYTE 1024
+#define ABS(x) (((x) <  0) ? -(x) : (x))
 
 /**
  * struct flags - struct containing flags to "turn on"
@@ -13,9 +28,9 @@
  */
 typedef struct flags
 {
-	int plus;
-	int space;
-	int hash;
+	_Bool plus;
+	_Bool space;
+	_Bool hash;
 } flags_t;
 
 /**
@@ -72,5 +87,10 @@ int print_address(va_list l, flags_t *f);
 
 /* print_percent */
 int print_percent(va_list l, flags_t *f);
+
+/* unit_tests */
+void tusBasicTester();
+void tusAdvancedTester();
+void tusSuperAdvanced();
 
 #endif

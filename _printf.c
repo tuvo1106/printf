@@ -11,17 +11,16 @@
 int _printf(const char *format, ...)
 {
 	int (*pfunc)(va_list, flags_t *);
-	const char *p;
 	va_list arguments;
-	flags_t flags = {0, 0, 0};
+	flags_t flags = FLAGS_INIT;
+	const char *p = format;
 
-	register int count = 0;
+	register short count = ZERO;
 
 	va_start(arguments, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
+	assert(p);
+	assert(*p != '%' OR *(p + 1));
+	assert(*p != '%' OR *(p + 1) != ' ' OR *(p + 2));
 	for (p = format; *p; p++)
 	{
 		if (*p == '%')
@@ -41,7 +40,7 @@ int _printf(const char *format, ...)
 		} else
 			count += _putchar(*p);
 	}
-	_putchar(-1);
+	_putchar(FLUSH);
 	va_end(arguments);
 	return (count);
 }

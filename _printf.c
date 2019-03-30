@@ -10,17 +10,15 @@
  */
 int _printf(const char *format, ...)
 {
-	int (*pfunc)(va_list, flags_t *);
+	int (*printFunc)(va_list, flags_t *);
 	va_list arguments;
 	flags_t flags = FLAGS_INIT;
 	const char *p = format;
 
-	register short count = ZERO;
+	register short len = 0;
 
 	va_start(arguments, format);
-	assert(p);
-	assert(*p != '%' || *(p + 1));
-	assert(*p != '%' || *(p + 1) != ' ' || *(p + 2));
+	assert(invalidInputs(p));
 	for (; *p; p++)
 	{
 		if (*p == '%')
@@ -28,19 +26,19 @@ int _printf(const char *format, ...)
 			p++;
 			if (*p == '%')
 			{
-				count += _putchar('%');
+				len += _putchar('%');
 				continue;
 			}
 			while (get_flag(*p, &flags))
 				p++;
-			pfunc = get_print(*p);
-			count += (pfunc)
-				? pfunc(arguments, &flags)
+			printFunc = get_print(*p);
+			len += (printFunc)
+				? printFunc(arguments, &flags)
 				: _printf("%%%c", *p);
 		} else
-			count += _putchar(*p);
+			len += _putchar(*p);
 	}
 	_putchar(FLUSH);
 	va_end(arguments);
-	return (count);
+	return (len);
 }

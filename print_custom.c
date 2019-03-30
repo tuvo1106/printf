@@ -12,7 +12,7 @@
  */
 int print_bigS(va_list l, mods *f)
 {
-	register short i, count = 0;
+	register short i, len = 0;
 	char *res, *s = va_arg(l, char *);
 
 	(void)f;
@@ -23,16 +23,16 @@ int print_bigS(va_list l, mods *f)
 		if (s[i] > 0 && (s[i] < 32 || s[i] >= 127))
 		{
 			_puts("\\x");
-			count += 2;
+			len += 2;
 			res = convert(s[i], 16, 0);
 			if (!res[1])
-				count += _putchar('0');
-			count += _puts(res);
+				len += _putchar('0');
+			len += _puts(res);
 		}
 		else
-			count += _putchar(s[i]);
+			len += _putchar(s[i]);
 	}
-	return (count);
+	return (len);
 }
 
 /**

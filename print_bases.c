@@ -15,12 +15,12 @@ int print_hex(va_list l, mods *f)
 	unsigned int num = va_arg(l, unsigned int);
 	char *str = convert(num, 16, 1);
 
-	register short count = 0;
+	register short len = 0;
 
 	if (f->hash && *str != '0')
-		count += _puts(HEXA);
-	count += _puts(str);
-	return (count);
+		len += _puts(HEXA);
+	len += _puts(str);
+	return (len);
 }
 
 /**
@@ -37,12 +37,13 @@ int print_hex_big(va_list l, mods *f)
 {
 	unsigned int num = va_arg(l, unsigned int);
 	char *str = convert(num, 16, 0);
-	register short count = 0;
+
+	register short len = 0;
 
 	if (f->hash && *str != '0')
-		count += _puts(HEXA);
-	count += _puts(str);
-	return (count);
+		len += _puts(HEXA);
+	len += _puts(str);
+	return (len);
 }
 
 /**
@@ -77,10 +78,10 @@ int print_octal(va_list l, mods *f)
 	unsigned int num = va_arg(l, unsigned int);
 	char *str = convert(num, 8, 0);
 
-	register short count = 0;
+	register short len = 0;
 
 	if (f->hash && *str != '0')
-		count += _putchar('0');
-	count += _puts(str);
-	return (count);
+		len += _putchar('0');
+	len += _puts(str);
+	return (len);
 }

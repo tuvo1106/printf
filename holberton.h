@@ -17,7 +17,7 @@
 #define ABS(x) (((x) <  0) ? -(x) : (x))
 
 /**
- * struct flags - struct containing flags to "turn on"
+ * struct modifiers - struct containing flags to "turn on"
  * when a flag specifier is passed to _printf()
  * @plus: flag for the '+' character
  * @space: flag for the ' ' character
@@ -89,8 +89,8 @@ int print_percent(va_list l, mods *f);
 _Bool invalidInputs(const char *p);
 
 /* unit_tests */
-void tusBasicTester();
-void tusAdvancedTester();
-void tusSuperAdvanced();
+void tusBasicTester(void);
+void tusAdvancedTester(void);
+void tusSuperAdvanced(void);
 
 #endif

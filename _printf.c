@@ -10,12 +10,11 @@
  */
 int _printf(const char *format, ...)
 {
+	register short len = 0;
 	int (*printFunc)(va_list, mods *);
-	va_list arguments;
 	mods prefixes = PF_INIT;
 	const char *p = format;
-
-	register short len = 0;
+	va_list arguments;
 
 	va_start(arguments, format);
 	assert(invalidInputs(p));

@@ -10,9 +10,9 @@
  */
 int _printf(const char *format, ...)
 {
-	int (*printFunc)(va_list, flags_t *);
+	int (*printFunc)(va_list, mods *);
 	va_list arguments;
-	flags_t flags = FLAGS_INIT;
+	mods prefixes = PF_INIT;
 	const char *p = format;
 
 	register short len = 0;
@@ -29,11 +29,11 @@ int _printf(const char *format, ...)
 				len += _putchar('%');
 				continue;
 			}
-			while (get_flag(*p, &flags))
+			while (get_flags(*p, &prefixes))
 				p++;
 			printFunc = get_print(*p);
 			len += (printFunc)
-				? printFunc(arguments, &flags)
+				? printFunc(arguments, &prefixes)
 				: _printf("%%%c", *p);
 		} else
 			len += _putchar(*p);

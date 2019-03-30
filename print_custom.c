@@ -10,9 +10,9 @@
  * if a flag is passed to _printf
  * Return: number of char printed
  */
-int print_bigS(va_list l, flags_t *f)
+int print_bigS(va_list l, mods *f)
 {
-	register short i, count = ZERO;
+	register short i, count = 0;
 	char *res, *s = va_arg(l, char *);
 
 	(void)f;
@@ -42,7 +42,7 @@ int print_bigS(va_list l, flags_t *f)
  * if a flag is passed to _printf
  * Return: length of the printed string
  */
-int print_rev(va_list l, flags_t *f)
+int print_rev(va_list l, mods *f)
 {
 	register short len = 0, j;
 	char *s = va_arg(l, char *);
@@ -64,7 +64,7 @@ int print_rev(va_list l, flags_t *f)
  * if a flag is passed to _printf
  * Return: length of the printed string
  */
-int print_rot13(va_list l, flags_t *f)
+int print_rot13(va_list l, mods *f)
 {
 	register short i, j;
 	char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -92,7 +92,7 @@ int print_rot13(va_list l, flags_t *f)
  * @f: pointer to the struct flags in which we turn the flags on
  * Return: number of char printed
  */
-int print_percent(va_list l, flags_t *f)
+int print_percent(va_list l, mods *f)
 {
 	(void)l;
 	(void)f;

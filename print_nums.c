@@ -7,7 +7,7 @@
  * if a flag is passed to _printf
  * Return: number of char printed
  */
-int print_int(va_list l, flags_t *f)
+int print_int(va_list l, mods *f)
 {
 	int n = va_arg(l, int);
 	int res = count_digit(n);
@@ -29,7 +29,7 @@ int print_int(va_list l, flags_t *f)
  * if a flag is passed to _printf
  * Return: number of char printed
  */
-int print_unsigned(va_list l, flags_t *f)
+int print_unsigned(va_list l, mods *f)
 {
 	unsigned int u = va_arg(l, unsigned int);
 	char *str = convert(u, 10, 0);
@@ -63,7 +63,7 @@ void print_number(int n)
  */
 int count_digit(int i)
 {
-	unsigned int d = ZERO;
+	unsigned int d = 0;
 	unsigned int u = ABS(i);
 
 	while (u)

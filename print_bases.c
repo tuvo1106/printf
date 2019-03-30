@@ -10,12 +10,12 @@
  * number into the correct base and returns it as a string
  * Return: the number of char printed
  */
-int print_hex(va_list l, flags_t *f)
+int print_hex(va_list l, mods *f)
 {
 	unsigned int num = va_arg(l, unsigned int);
 	char *str = convert(num, 16, 1);
 
-	register short count = ZERO;
+	register short count = 0;
 
 	if (f->hash && *str != '0')
 		count += _puts(HEXA);
@@ -33,11 +33,11 @@ int print_hex(va_list l, flags_t *f)
  * number into the correct base and returns it as a string
  * Return: the number of char printed
  */
-int print_hex_big(va_list l, flags_t *f)
+int print_hex_big(va_list l, mods *f)
 {
 	unsigned int num = va_arg(l, unsigned int);
 	char *str = convert(num, 16, 0);
-	register short count = ZERO;
+	register short count = 0;
 
 	if (f->hash && *str != '0')
 		count += _puts(HEXA);
@@ -54,7 +54,7 @@ int print_hex_big(va_list l, flags_t *f)
  * number into the correct base and returns it as a string
  * Return: the number of char printed
  */
-int print_binary(va_list l, flags_t *f)
+int print_binary(va_list l, mods *f)
 {
 	unsigned int num = va_arg(l, unsigned int);
 	char *str = convert(num, 2, 0);
@@ -72,11 +72,12 @@ int print_binary(va_list l, flags_t *f)
  * number into the correct base and returns it as a string
  * Return: the number of char printed
  */
-int print_octal(va_list l, flags_t *f)
+int print_octal(va_list l, mods *f)
 {
 	unsigned int num = va_arg(l, unsigned int);
 	char *str = convert(num, 8, 0);
-	register short count = ZERO;
+
+	register short count = 0;
 
 	if (f->hash && *str != '0')
 		count += _putchar('0');

@@ -17,7 +17,7 @@ int _putchar(char c)
 	if (c == FLUSH || i >= KILOBYTE)
 	{
 		write(1, &buf, i);
-		i = ZERO;
+		i = 0;
 	} else
 	{
 		buf[i] = c;

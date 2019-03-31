@@ -12,27 +12,37 @@
  */
 int print_bigS(va_list l, mods *f)
 {
-	register short i, len = 0;
+	register short len = 0;
 	char *res, *s = va_arg(l, char *);
 
 	(void)f;
 	if (!s)
 		return (_puts(NULL_STRING));
-	for (i = 0; s[i]; i++)
+	for (; *s; s++)
 	{
-		if (s[i] > 0 && (s[i] < 32 || s[i] >= 127))
+		if (isNonAlphaNumeric(*s))
 		{
-			_puts("\\x");
-			len += 2;
-			res = convert(s[i], 16, 0);
+			count += _puts("\\x");
+			res = convert(*s, 16, 0);
 			if (!res[1])
 				len += _putchar('0');
 			len += _puts(res);
 		}
 		else
-			len += _putchar(s[i]);
+			len += _putchar(*s);
 	}
 	return (len);
+}
+
+/**
+ * isNonAlphaNumeric - determines if char is a non-
+ * alphanumeric char on ASCII table
+ * @c: input char
+ * Return: true or false
+ */
+_Bool isNonAlphaNumeric(char c)
+{
+	return ((c > 0 && c < 32) || c >= 127);
 }
 
 /**

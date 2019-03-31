@@ -78,6 +78,7 @@ int _puts(char *str);
 int print_rot13(va_list l, mods *f);
 int print_rev(va_list l, mods *f);
 int print_bigS(va_list l, mods *f);
+_Bool isNonAlphaNumeric(char c);
 
 /* print_address */
 int print_address(va_list l, mods *f);
